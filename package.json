@@ -4,7 +4,7 @@
   "description": "Junior phase project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/*/*.test.js --watch"
   },
   "author": "Justin Cook",
   "license": "ISC",

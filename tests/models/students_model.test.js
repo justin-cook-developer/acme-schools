@@ -230,7 +230,7 @@ describe(`The 'Student' model`, () => {
       await createdStudent.setSchool(createdSchool);
 
       const foundStudent = await Student.findOne({
-        where: { name: 'Cuesta' },
+        where: { name: 'Justin' },
         include: { model: School },
       });
 
