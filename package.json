@@ -4,7 +4,10 @@
   "description": "Junior phase project.",
   "main": "index.js",
   "scripts": {
-    "test:models": "mocha ./tests/models/*.test.js --watch"
+    "server:dev": "nodemon ./server/index.js --ignore client --ignore public",
+    "test:models": "mocha ./tests/models/*.test.js --watch",
+    "test:routes": "mocha ./tests/routes/*.test.js --watch",
+    "seed": "node ./seed.js"
   },
   "author": "Justin Cook",
   "license": "ISC",
@@ -18,7 +21,6 @@
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.1",
-    "sinon": "^7.3.2",
-    "sinon-chai": "^3.3.0"
+    "supertest": "^4.0.2"
   }
 }
