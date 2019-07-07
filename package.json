@@ -4,7 +4,7 @@
   "description": "Junior phase project.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/*/*.test.js --watch"
+    "test:models": "mocha ./tests/models/*.test.js --watch"
   },
   "author": "Justin Cook",
   "license": "ISC",

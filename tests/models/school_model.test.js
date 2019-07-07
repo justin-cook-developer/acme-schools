@@ -4,9 +4,7 @@ const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
-const Student = require('../../server/db/student');
-const School = require('../../server/db/school');
-const { connection } = require('../../server/db/connection');
+const { School, Student, connection } = require('../../server/db/index');
 
 describe(`The 'School' model`, () => {
   // Clear db and recreate tables
@@ -17,7 +15,8 @@ describe(`The 'School' model`, () => {
   beforeEach(() => {
     school = School.build({
       name: 'Cuesta',
-      imageURL: require('./cuestaImageUrl'),
+      imageURL:
+        'https://upload.wikimedia.org/wikipedia/en/a/a1/Cuestacollege.png',
     });
   });
 
@@ -32,13 +31,13 @@ describe(`The 'School' model`, () => {
   after(() => connection.sync({ force: true }));
 
   describe('attributes definition', () => {
-    it('includes `id, `name`, and `imageURL` fields', async () => {
+    it('includes `id`, `name`, and `imageURL` fields', async () => {
       const savedSchool = await school.save();
-      // need to check if uuid
-      console.log(typeof savedSchool.id);
-      // expect(typeof savedSchool.id).to.be.equal('string');
+      expect(typeof savedSchool.id).to.be.equal('string');
       expect(savedSchool.name).to.equal('Cuesta');
-      expect(savedSchool.imageURL).to.equal(require('./cuestaImageUrl'));
+      expect(savedSchool.imageURL).to.equal(
+        'https://upload.wikimedia.org/wikipedia/en/a/a1/Cuestacollege.png'
+      );
     });
 
     it('requires `name`', async () => {
@@ -96,19 +95,19 @@ describe(`The 'School' model`, () => {
     });
 
     it('provides a default `imageURL`', async () => {
-      school.imageURL = null;
-
       let result, err;
       try {
-        result = await school.save();
-      } catch (err) {
-        error = err;
+        result = await School.create({
+          name: 'Cuesta',
+        });
+      } catch (error) {
+        err = error;
       }
 
       if (err) throw Error('School should have a default imageURL');
 
       expect(result.imageURL).to.be.equal(
-        require('../../server/db/defaultSchoolImageURL')
+        `http://beaconenglishdayschool.com/img/school-default.jpg`
       );
     });
 
@@ -146,7 +145,6 @@ describe(`The 'School' model`, () => {
         creatingSchool,
       ]);
 
-      // this method `setAuthor` automatically exists if you set up the association correctly
       await createdStudent.setSchool(createdSchool);
 
       const foundSchool = await School.findOne({
@@ -154,11 +152,9 @@ describe(`The 'School' model`, () => {
         include: { model: Student },
       });
 
-      console.log(foundSchool.dataValues);
-
       expect(foundSchool.students).to.exist; // eslint-disable-line no-unused-expressions
       expect(foundSchool.students[0]).to.exist; // eslint-disable-line no-unused-expressions
-      expect(foundSchool.students[0].name).to.equal('Justin');
+      expect(foundSchool.students[0].firstName).to.equal('Justin');
     });
   });
 });

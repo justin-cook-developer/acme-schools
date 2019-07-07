@@ -6,9 +6,7 @@ const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
-const Student = require('../../server/db/student');
-const School = require('../../server/db/school');
-const { connection } = require('../../server/db/connection');
+const { School, Student, connection } = require('../../server/db/index');
 
 describe(`The 'Student' model`, () => {
   // Clear db and recreate tables
@@ -36,9 +34,7 @@ describe(`The 'Student' model`, () => {
   describe('attributes definition', () => {
     it('includes `id, `firstName`, `lastName`, `email`, and `GPA` fields', async () => {
       const savedStudent = await student.save();
-      // need to check if uuid
-      console.log(typeof savedStudent.id);
-      // expect(typeof savedStudent.id).to.be.equal('string');
+      expect(typeof savedStudent.id).to.be.equal('string');
       expect(savedStudent.firstName).to.equal('Justin');
       expect(savedStudent.lastName).to.equal('Cook');
       expect(savedStudent.email).to.equal('j@gmail.com');
@@ -200,7 +196,7 @@ describe(`The 'Student' model`, () => {
       try {
         result2 = await student.validate();
       } catch (err) {
-        error = err;
+        error2 = err;
       }
 
       if (result2)
@@ -212,7 +208,7 @@ describe(`The 'Student' model`, () => {
   });
 
   describe('associations', () => {
-    it("belongs to a user, who is stored as the article's `author`", async () => {
+    it('belongs to a school', async () => {
       const creatingStudent = Student.create({
         firstName: 'Justin',
         lastName: 'Cook',
@@ -226,11 +222,10 @@ describe(`The 'Student' model`, () => {
         creatingSchool,
       ]);
 
-      // this method `setAuthor` automatically exists if you set up the association correctly
       await createdStudent.setSchool(createdSchool);
 
       const foundStudent = await Student.findOne({
-        where: { name: 'Justin' },
+        where: { firstName: 'Justin' },
         include: { model: School },
       });
 
