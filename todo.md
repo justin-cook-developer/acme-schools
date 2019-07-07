@@ -1,3 +1,5 @@
-remove sinon?
+deployment
+-- try npm postinstall scripts for dep
+-- seed on install?
 
-try npm postinstall scripts
+setup front end webpack stuff for react/redux/bulma
