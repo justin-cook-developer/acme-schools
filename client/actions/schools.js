@@ -1,6 +1,6 @@
-export const GET_SCHOOLS = 'GET_SCHOOLS';
+export const GOT_SCHOOLS = 'GOT_SCHOOLS';
 
-const gotSchools = schools => ({ type: GET_SCHOOLS, schools });
+const gotSchools = schools => ({ type: GOT_SCHOOLS, schools });
 export const fetchSchools = () => async (dispatch, _, axios) => {
   try {
     const { data } = await axios.get('/api/schools');
