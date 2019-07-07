@@ -4,7 +4,7 @@
   "description": "Junior phase project.",
   "main": "index.js",
   "scripts": {
-    "start:dev": "npm run wepback:dev & npm run server:dev",
+    "start:dev": "npm run webpack:dev & npm run server:dev",
     "server:dev": "nodemon ./server/index.js --ignore client --ignore public",
     "webpack:dev": "webpack --watch",
     "test:models": "mocha ./tests/models/*.test.js --watch",

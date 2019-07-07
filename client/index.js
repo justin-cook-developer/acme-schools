@@ -5,3 +5,5 @@ import 'bulma/css/bulma.css';
 const root = document.getElementById('root');
 
 ReactDOM.render(<hr />, root);
+
+console.log('rendered!!!');

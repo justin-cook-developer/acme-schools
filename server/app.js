@@ -10,11 +10,11 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-express.static(path.join(__dirname, '..', 'public'));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use('/api', require('./api/index'));
 
-app.get('/', (req, res) =>
+app.use((req, res) =>
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
 );
 
