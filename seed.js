@@ -34,7 +34,6 @@ connection
     });
 
     await Promise.all(creatingAssociations);
-
-    console.log('Seed success!');
   })
+  .then(() => console.log('Seed success!'))
   .catch(console.error);

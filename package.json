@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "server:dev": "nodemon ./server/index.js --ignore client --ignore public",
+    "test": "npm run test:models & npm run test:routes --watch",
     "test:models": "mocha ./tests/models/*.test.js --watch",
+    "test:routes": "mocha ./tests/routes/*.test.js --watch",
     "seed": "node ./seed.js"
   },
   "author": "Justin Cook",
@@ -21,6 +23,7 @@
     "mocha": "^6.1.4",
     "nodemon": "^1.19.1",
     "sinon": "^7.3.2",
-    "sinon-chai": "^3.3.0"
+    "sinon-chai": "^3.3.0",
+    "supertest": "^4.0.2"
   }
 }
