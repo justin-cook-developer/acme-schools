@@ -41,7 +41,7 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
@@ -55,7 +55,7 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
@@ -71,7 +71,7 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
@@ -87,7 +87,7 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
@@ -103,13 +103,13 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
       expect(res.body.errors).to.be.an.instanceOf(Object);
       expect(res.body.errors.lastName).to.exist;
-      expect(res.body.errors.lastName).to.equal(`lastName is required.`);
+      expect(res.body.errors.lastName).to.equal(`LastName is required.`);
     });
 
     it('expects an error message if `email` is `null`', async () => {
@@ -119,7 +119,7 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
@@ -135,14 +135,14 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
       expect(res.body.errors).to.be.an.instanceOf(Object);
       expect(res.body.errors.email).to.exist;
       expect(res.body.errors.email).to.equal(
-        `Email must be a valid email address.`
+        `Email is required. Email must be a valid email address.`
       );
     });
 
@@ -153,7 +153,7 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
@@ -171,13 +171,13 @@ describe('/api/students POST route', async () => {
         .expect('Content-Type', /json/)
         .expect(200);
 
-      const student2 = { ...student, firstName: 'Jeff' };
+      const student2 = { ...student, firstName: 'Jeff', GPA: 3.0 };
 
       const res = await agent
         .post('/api/students')
         .send(student2)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
@@ -195,7 +195,7 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
@@ -211,13 +211,13 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
       expect(res.body.errors).to.be.an.instanceOf(Object);
       expect(res.body.errors.GPA).to.exist;
-      expect(res.body.errors.GPA).to.equal(`GPA cannot be less than 0.0.`);
+      expect(res.body.errors.GPA).to.equal(`GPA must be greater than 0.0 and less than 5.0.`);
     });
 
     it('expects an error message if `GPA` is more than `5.0`', async () => {
@@ -227,13 +227,13 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(500);
+        .expect(200);
 
       expect(res.body).to.be.an.instanceOf(Object);
       expect(res.body.errors).to.exist;
       expect(res.body.errors).to.be.an.instanceOf(Object);
       expect(res.body.errors.GPA).to.exist;
-      expect(res.body.errors.GPA).to.equal(`GPA cannot be more than 5.0.`);
+      expect(res.body.errors.GPA).to.equal(`GPA must be greater than 0.0 and less than 5.0.`);
     });
   });
 });

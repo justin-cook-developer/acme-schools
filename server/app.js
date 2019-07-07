@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 
+const parseErrors = require('./parseErrors/index');
+
 const app = express();
 
 app.use(morgan('dev'));
@@ -17,6 +19,14 @@ app.get('/', (req, res) =>
 );
 
 app.use((e, req, res, next) => {
+  // this only works for the Student model
+  if (
+    e.name === 'SequelizeValidationError' ||
+    e.name === 'SequelizeUniqueConstraintError'
+  ) {
+    res.json(parseErrors(e.errors));
+    return;
+  }
   next(e);
 });
 
