@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server:dev": "nodemon ./server/index.js --ignore client --ignore public",
-    "test:models": "mocha ./tests/models/*.test.js --watch"
+    "test:models": "mocha ./tests/models/*.test.js --watch",
+    "seed": "node ./seed.js"
   },
   "author": "Justin Cook",
   "license": "ISC",
