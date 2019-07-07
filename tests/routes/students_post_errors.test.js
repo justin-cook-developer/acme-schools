@@ -9,7 +9,7 @@ const agent = request.agent(app);
 
 const { connection, Student, School } = require('../../server/db/index');
 
-describe('/api/students POST route', async () => {
+describe('/api/students POST route', () => {
   before(() => {
     return connection.sync({ force: true });
   });
@@ -33,7 +33,7 @@ describe('/api/students POST route', async () => {
 
   after(() => connection.sync({ force: true }));
 
-  describe('sends back errors with sequelize validation errors', async () => {
+  describe('sends back errors with sequelize validation errors', () => {
     it('expects an `errors` key with value obj', async () => {
       student.firstName = null;
 
