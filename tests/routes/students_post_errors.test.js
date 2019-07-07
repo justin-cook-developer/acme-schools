@@ -169,7 +169,7 @@ describe('/api/students POST route', async () => {
         .post('/api/students')
         .send(student)
         .expect('Content-Type', /json/)
-        .expect(200);
+        .expect(201);
 
       const student2 = { ...student, firstName: 'Jeff', GPA: 3.0 };
 
@@ -217,7 +217,9 @@ describe('/api/students POST route', async () => {
       expect(res.body.errors).to.exist;
       expect(res.body.errors).to.be.an.instanceOf(Object);
       expect(res.body.errors.GPA).to.exist;
-      expect(res.body.errors.GPA).to.equal(`GPA must be greater than 0.0 and less than 5.0.`);
+      expect(res.body.errors.GPA).to.equal(
+        `GPA must be greater than 0.0 and less than 5.0.`
+      );
     });
 
     it('expects an error message if `GPA` is more than `5.0`', async () => {
@@ -233,7 +235,9 @@ describe('/api/students POST route', async () => {
       expect(res.body.errors).to.exist;
       expect(res.body.errors).to.be.an.instanceOf(Object);
       expect(res.body.errors.GPA).to.exist;
-      expect(res.body.errors.GPA).to.equal(`GPA must be greater than 0.0 and less than 5.0.`);
+      expect(res.body.errors.GPA).to.equal(
+        `GPA must be greater than 0.0 and less than 5.0.`
+      );
     });
   });
 });
