@@ -2,6 +2,7 @@ deployment
 -- try npm postinstall scripts for dep
 -- seed on install?
 
-plan out component structure/ state strucure (two flat arrays)
-setup front end webpack stuff for react/redux/bulma
+provider over router or vice versa?
+incorporate redux dev tools
+plan out component structure
 think memoize filtering
