@@ -4,8 +4,6 @@ deployment
 
 plan out component structure
 
-add state for nav hamburger: ui reducer with actions
-make nav hamburger work
 refactor nav
 make home component
 

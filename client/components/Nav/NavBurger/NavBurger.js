@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 
-import Nav from './NavDumb';
-import { toggleBurger } from '../../actions/ui';
+import NavBurger from './NavBurgerDumb';
+import { toggleBurger } from '../../../actions/ui';
 
 const mapStateToProps = ({ ui }) => {
   const { navExpanded } = ui;
-  return { navExpanded };
+  return {
+    navExpanded,
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -17,4 +19,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Nav);
+)(NavBurger);

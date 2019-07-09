@@ -1,21 +1,18 @@
 import React from 'react';
 
-import NavBrand from './NavBrand';
-import NavMenu from './NavMenu';
+import NavBrand from './NavBrand/NavBrand';
+import NavMenu from './NavMenu/NavMenu';
 
-const Nav = props => {
-  const { navExpanded, toggleBar } = props;
-  return (
-    <nav
-      className="navbar"
-      role="navigation"
-      aria-label="main navigation"
-      onClick={navExpanded ? toggleBar : null}
-    >
-      <NavBrand navExpanded={navExpanded} toggleBar={toggleBar} />
-      <NavMenu {...props} />
-    </nav>
-  );
-};
+const Nav = ({ navExpanded, toggleBar }) => (
+  <nav
+    className="navbar"
+    role="navigation"
+    aria-label="main navigation"
+    onClick={navExpanded ? toggleBar : null}
+  >
+    <NavBrand />
+    <NavMenu />
+  </nav>
+);
 
 export default Nav;
