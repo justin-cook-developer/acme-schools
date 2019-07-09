@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBurger = () => (
+const NavBurger = ({ navExpanded, toggleBar }) => (
   <a
     role="button"
-    className="navbar-burger burger"
+    className={`navbar-burger burger ${navExpanded ? 'is-active' : ''}`}
     aria-label="menu"
     aria-expanded="false"
     data-target="navbarBasicExample"
+    onClick={toggleBar}
   >
     <span aria-hidden="true" />
     <span aria-hidden="true" />
@@ -15,7 +16,7 @@ const NavBurger = () => (
   </a>
 );
 
-const NavBrand = () => (
+const NavBrand = props => (
   <div className="navbar-brand">
     <Link className="navbar-item" to="/">
       <img
@@ -24,7 +25,7 @@ const NavBrand = () => (
         height="28"
       />
     </Link>
-    <NavBurger />
+    <NavBurger {...props} />
   </div>
 );
 

@@ -34,11 +34,16 @@ const NavStart = ({ students, schools, mostPopular, bestGPA }) => (
   </div>
 );
 
-const NavMenu = props => (
-  <div className="navbar-menu">
-    <NavStart {...props} />
-    <NavEnd />
-  </div>
-);
+const NavMenu = props => {
+  const { navExpanded } = props;
+  return (
+    <div
+      className={`navbar-menu ${navExpanded ? 'is-active' : ''}`}
+    >
+      <NavStart {...props} />
+      <NavEnd />
+    </div>
+  );
+};
 
 export default NavMenu;

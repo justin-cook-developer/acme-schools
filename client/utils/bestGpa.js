@@ -29,7 +29,6 @@ const findHighestGpa = (gpas = {}) => {
 
 const findSchoolWithHighestGPA = (students = [], schools = []) => {
   const gpas = calculateGpas(students, schools);
-  console.log('-----', gpas);
   return findHighestGpa(gpas);
 };
 
