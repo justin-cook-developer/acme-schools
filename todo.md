@@ -2,7 +2,13 @@ deployment
 -- try npm postinstall scripts for dep
 -- seed on install?
 
-provider over router or vice versa?
-incorporate redux dev tools
 plan out component structure
+
+add state for nav hamburger
+make nav hamburger work
+refactor nav
+make home component
+
+redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
 think memoize filtering
+make utils functions efficient
