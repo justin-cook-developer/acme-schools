@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const heroStyles = {
   position: 'relative',
@@ -28,14 +29,18 @@ const Home = ({ mostPopular, bestGPA }) => {
         <div className="container">
           {mostPopular && (
             <h1 className="title">
-              Our most popular school is {mostPopular[0].name} with{' '}
-              {mostPopular[1]} students
+              Our most popular school is{' '}
+              <Link to={`/schools/${mostPopular[0].id}`}>
+                {mostPopular[0].name}
+              </Link>{' '}
+              with {mostPopular[1]} students
             </h1>
           )}
           {bestGPA && (
             <h2 className="subtitle">
-              Our best school is {bestGPA[0].name} with an average GPA of{' '}
-              {bestGPA[1]}
+              Our best school is{' '}
+              <Link to={`/schools/${bestGPA[0].id}`}>{bestGPA[0].name}</Link>{' '}
+              with an average GPA of {bestGPA[1]}
             </h2>
           )}
         </div>
