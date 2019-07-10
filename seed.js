@@ -1,6 +1,6 @@
 const { connection, Student, School } = require('./server/db/index');
 
-const makeSchool = name => ({ name });
+const makeSchool = (name, imageURL) => ({ name, imageURL });
 const makeStudent = (firstName, lastName, email, GPA) => ({
   firstName,
   lastName,
@@ -9,7 +9,10 @@ const makeStudent = (firstName, lastName, email, GPA) => ({
 });
 
 const schoolsData = [
-  makeSchool('Cuesta'),
+  makeSchool(
+    'Cuesta',
+    'https://upload.wikimedia.org/wikipedia/en/a/a1/Cuestacollege.png'
+  ),
   makeSchool('UCSD'),
   makeSchool('Cal Poly'),
 ];

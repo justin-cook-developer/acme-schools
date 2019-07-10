@@ -4,9 +4,8 @@ deployment
 
 plan out component structure
 
-make students component
-student cards
-single student page ?
+student cards height issue
+edit student modal
 
 redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
 think memoize filtering

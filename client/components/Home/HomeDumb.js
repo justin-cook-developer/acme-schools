@@ -20,7 +20,6 @@ const Home = ({ mostPopular, bestGPA }) => {
   return (
     <section className="hero is-success is-fullheight" style={heroStyles}>
       <img
-        alt="Fill Murray"
         className="hero-background is-transparent"
         src="/vasily-koloda-8CqDvPuo_kI-unsplash.jpg"
         style={imgStyles}
