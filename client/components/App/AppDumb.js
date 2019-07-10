@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
+import Home from '../Home/Home';
 
 class App extends Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class App extends Component {
         </header>
         <main>
           <Switch>
-            <Route path="/" exact render={() => <div>HOME</div>} />
+            <Route path="/" exact component={Home} />
           </Switch>
         </main>
       </Fragment>

@@ -4,7 +4,6 @@ deployment
 
 plan out component structure
 
-refactor nav
 make home component
 
 redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
