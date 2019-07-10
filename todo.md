@@ -4,7 +4,9 @@ deployment
 
 plan out component structure
 
-make home component
+make students component
+student cards
+single student page ?
 
 redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
 think memoize filtering

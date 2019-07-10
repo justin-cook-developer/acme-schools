@@ -3,6 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
 import Home from '../Home/Home';
+import Students from '../Students/Students';
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/students" exact component={Students} />
           </Switch>
         </main>
       </Fragment>
