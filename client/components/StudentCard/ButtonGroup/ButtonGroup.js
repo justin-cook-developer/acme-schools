@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ButtonGroup = ({ destroyStudent }) => (
+const ButtonGroup = ({ destroyStudent, student }) => (
   <div className="buttons is-centered">
-    <button type="button" className="button is-info">
+    <Link to={`/students/edit/${student.id}`} className="button is-info">
       Edit
-    </button>
+    </Link>
     <button onClick={destroyStudent} type="button" className="button is-danger">
       Delete
     </button>

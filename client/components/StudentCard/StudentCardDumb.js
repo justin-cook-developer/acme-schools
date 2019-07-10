@@ -9,7 +9,10 @@ const StudentCard = ({ student, studentSchool, destroyStudent }) => {
     <div className="tile is-parent is-4">
       <div className="tile is-child box has-text-centered" style={cardStyles}>
         <CardContent student={student} studentSchool={studentSchool} />
-        <ButtonGroup destroyStudent={() => destroyStudent(student.id)} />
+        <ButtonGroup
+          student={student}
+          destroyStudent={() => destroyStudent(student.id)}
+        />
       </div>
     </div>
   );
