@@ -22,13 +22,18 @@ class StudentForm extends Component {
 
   handleGpaChange = ({ target }) => {
     const value = target.value;
-    const GPA = Number.isNaN(value) ? 0 : parseFloat(target.value, 10);
-    console.log(GPA);
+    const GPA = value === '' ? value : parseFloat(target.value, 10);
     this.setState(state => ({ ...state, GPA }));
   };
 
+  handleSchoolChange = ({ target }) => {
+    const value = target.value;
+    const schoolId = target.value === '-- Not enrolled --' ? null : value;
+    this.setState(state => ({ ...state, schoolId }));
+  };
+
   render() {
-    const { firstName, lastName, email, GPA } = this.state;
+    const { firstName, lastName, email, GPA, schoolId } = this.state;
     return (
       <form onSubmit={e => e.preventDefault()}>
         <div className="field">
@@ -93,8 +98,6 @@ class StudentForm extends Component {
               name="GPA"
               className="input"
               type="number"
-              min="0.0"
-              max="5.0"
             />
           </div>
         </div>
@@ -105,9 +108,19 @@ class StudentForm extends Component {
           </label>
           <div className="control">
             <div className="select">
-              <select name="school">
-                <option>Select dropdown</option>
-                <option>With options</option>
+              <select name="school" onChange={this.handleSchoolChange}>
+                <option value={null}>-- Not enrolled --</option>
+                {this.props.schools.map(school => {
+                  return (
+                    <option
+                      key={school.id}
+                      value={school.id}
+                      selected={school.id === schoolId}
+                    >
+                      {school.name}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
@@ -136,6 +149,7 @@ StudentForm.defaultProps = {
   email: '',
   GPA: 0.0,
   schoolId: null,
+  schools: [],
 };
 
 export default StudentForm;
