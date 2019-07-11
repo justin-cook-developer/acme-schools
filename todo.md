@@ -4,11 +4,16 @@ deployment
 
 plan out component structure
 
-make student form w/ option for default props
+pull form markup out from class
+make markup for validation errors
+need to reconfigure post/put to include {errors}
+form state should be { errors: {}, vals: {}}
+make api request in form submission, not thunk
+check for errors, if errors, set state, else dispatch new/updated student and redirect (use withRouter to get history)
+
 edit student modal w/ route in /students (/students/edit/:id)
 add student page
 student cards height issue
-
 
 redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
 think memoize filtering
