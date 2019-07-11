@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import Home from '../Home/Home';
 import Students from '../Students/Students';
+import StudentsForm from '../StudentForm/StudentForm';
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Nav />
         </header>
         <main>
+          <StudentsForm />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/students" component={Students} />
