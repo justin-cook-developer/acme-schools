@@ -4,10 +4,7 @@ deployment
 
 plan out component structure
 
-pull form markup out from class
-make markup for validation errors
-need to reconfigure post/put to include {errors}
-form state should be { errors: {}, vals: {}}
+form should receive handleSubmit, schools, and handleCancel
 make api request in form submission, not thunk
 check for errors, if errors, set state, else dispatch new/updated student and redirect (use withRouter to get history)
 
