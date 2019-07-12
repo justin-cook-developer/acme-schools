@@ -13,15 +13,7 @@ export const getStudents = () => async (dispatch, _, axios) => {
   }
 };
 
-const madeStudent = student => ({ type: CREATED_STUDENT, student });
-export const makeStudent = body => async (dispatch, _, axios) => {
-  try {
-    const { data } = await axios.post('/api/students', body);
-    dispatch(madeStudent(data));
-  } catch (error) {
-    console.error(error);
-  }
-};
+export const madeStudent = student => ({ type: CREATED_STUDENT, student });
 
 const updatedStudent = student => ({ type: UPDATED_STUDENT, student });
 export const updateStudent = (id, body) => async (dispatch, _, axios) => {

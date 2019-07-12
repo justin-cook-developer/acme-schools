@@ -4,14 +4,11 @@ deployment
 
 plan out component structure
 
-form should receive handleSubmit, schools, and handleCancel
--- affectStore, (student instance) from connect
--- apiCall, handleCancel, navigate from comp that wraps form
-make api request in form submission, not thunk
-check for errors, if errors, set state, else dispatch new/updated student and redirect (use withRouter to get history)
+post form is working.
+need to send back a gpa error if ''
+format first name and last name errors FirstName
 
 edit student modal w/ route in /students (/students/edit/:id)
-add student page
 student cards height issue
 
 redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/

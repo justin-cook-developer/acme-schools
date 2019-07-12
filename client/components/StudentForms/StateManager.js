@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
-import FormMarkup from './FormMarkup/FormMarkup';
-
-class StudentForm extends Component {
+class StateManager extends Component {
   constructor(props) {
     super(props);
     const { firstName, lastName, email, GPA, schoolId } = props;
@@ -44,19 +42,8 @@ class StudentForm extends Component {
     }));
   };
 
-  handleSubmit = async e => {
-    e.preventDefault();
-    try {
-      const { data } = await this.props.apiCall(this.state.values);
-      if (data.errors) {
-        this.setState(state => ({ ...state, errors: data.errors }));
-      } else {
-        this.props.affectStore(data);
-        this.props.navigate();
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  setErrors = errors => {
+    this.setState(state => ({ ...state, errors }));
   };
 
   render() {
@@ -64,30 +51,29 @@ class StudentForm extends Component {
       handleTextChange,
       handleGpaChange,
       handleSchoolChange,
-      handleSubmit,
+      setErrors,
       state,
     } = this;
-    const { handleCancel } = this.props;
     return (
-      <FormMarkup
-        state={state}
-        handleTextChange={handleTextChange}
-        handleGpaChange={handleGpaChange}
-        handleSchoolChange={handleSchoolChange}
-        handleCancel={handleCancel}
-        handleSubmit={handleSubmit}
-      />
+      <Fragment>
+        {this.props.render({
+          state,
+          setErrors,
+          handleTextChange,
+          handleGpaChange,
+          handleSchoolChange,
+        })}
+      </Fragment>
     );
   }
 }
 
-StudentForm.defaultProps = {
+StateManager.defaultProps = {
   firstName: '',
   lastName: '',
   email: '',
   GPA: 0.0,
   schoolId: null,
-  schools: [],
 };
 
-export default StudentForm;
+export default StateManager;

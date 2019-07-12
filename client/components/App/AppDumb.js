@@ -1,10 +1,10 @@
 import React, { Fragment, Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
 import Home from '../Home/Home';
 import Students from '../Students/Students';
-import StudentsForm from '../StudentForm/StudentForm';
+import AddStudent from '../AddStudent/AddStudent';
 
 class App extends Component {
   componentDidMount() {
@@ -19,10 +19,10 @@ class App extends Component {
           <Nav />
         </header>
         <main>
-          <StudentsForm />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/students" component={Students} />
+            <Route path="/addStudent" exact component={AddStudent} />
           </Switch>
         </main>
       </Fragment>
@@ -30,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default App;
