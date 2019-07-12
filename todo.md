@@ -5,6 +5,8 @@ deployment
 plan out component structure
 
 form should receive handleSubmit, schools, and handleCancel
+-- affectStore, (student instance) from connect
+-- apiCall, handleCancel, navigate from comp that wraps form
 make api request in form submission, not thunk
 check for errors, if errors, set state, else dispatch new/updated student and redirect (use withRouter to get history)
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FormMarkup from './StudentFormMarkup';
+import FormMarkup from './FormMarkup/FormMarkup';
 
 class StudentForm extends Component {
   constructor(props) {
@@ -44,15 +44,38 @@ class StudentForm extends Component {
     }));
   };
 
+  handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const { data } = await this.props.apiCall(this.state.values);
+      if (data.errors) {
+        this.setState(state => ({ ...state, errors: data.errors }));
+      } else {
+        this.props.affectStore(data);
+        this.props.navigate();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   render() {
-    const { handleTextChange, handleGpaChange, handleSchoolChange } = this;
+    const {
+      handleTextChange,
+      handleGpaChange,
+      handleSchoolChange,
+      handleSubmit,
+      state,
+    } = this;
+    const { handleCancel } = this.props;
     return (
       <FormMarkup
-        state={this.state}
+        state={state}
         handleTextChange={handleTextChange}
         handleGpaChange={handleGpaChange}
         handleSchoolChange={handleSchoolChange}
-        schools={this.props.schools}
+        handleCancel={handleCancel}
+        handleSubmit={handleSubmit}
       />
     );
   }

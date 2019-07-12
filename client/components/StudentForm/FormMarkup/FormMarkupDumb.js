@@ -7,6 +7,8 @@ const FormMarkup = ({
   handleTextChange,
   handleGpaChange,
   handleSchoolChange,
+  handleSubmit,
+  handleCancel,
   schools,
 }) => {
   const { firstName, lastName, email, GPA, schoolId } = state.values;
@@ -18,7 +20,7 @@ const FormMarkup = ({
   } = state.errors;
 
   return (
-    <form onSubmit={e => e.preventDefault()}>
+    <form onSubmit={e => handleSubmit(e)}>
       <div className="field">
         <label className="label" htmlFor="firstName">
           First Name
@@ -120,7 +122,11 @@ const FormMarkup = ({
           </button>
         </div>
         <div className="control">
-          <button type="button" className="button is-text">
+          <button
+            type="button"
+            className="button is-text"
+            onClick={handleCancel}
+          >
             Cancel
           </button>
         </div>
