@@ -16,7 +16,7 @@ const CardContent = ({ student, studentSchool }) => {
           <p className="is-size-5">Attends: {studentSchool.name}</p>
         </Fragment>
       )}
-      {!studentSchool && <p className="is-size-5">Attends no school</p>}
+      {!studentSchool && <p className="is-size-5">Attends: No School</p>}
     </div>
   );
 };

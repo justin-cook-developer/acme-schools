@@ -1,13 +1,14 @@
 deployment
--- try npm postinstall scripts for dep
+-- try npm postinstall scripts for build webpack, createdb
 -- seed on install?
 
 plan out component structure
 
-post form is working.
 need to send back a gpa error if ''
+fix handlegpa to allow ''
 format first name and last name errors FirstName
 
+nav bar font size
 edit student modal w/ route in /students (/students/edit/:id)
 student cards height issue
 

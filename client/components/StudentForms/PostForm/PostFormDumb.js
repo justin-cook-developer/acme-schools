@@ -21,7 +21,6 @@ class PostForm extends Component {
       if (data.errors) {
         this.props.setErrors(data.errors);
       } else {
-        console.log(this.props.addStudent);
         this.props.addStudent(data);
         this.goBack();
       }
@@ -38,6 +37,7 @@ class PostForm extends Component {
       handleGpaChange,
       handleSchoolChange,
     } = this.props;
+    
     return (
       <FormMarkup
         state={state}

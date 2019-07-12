@@ -7,7 +7,7 @@ import PostForm from '../StudentForms/PostForm/PostForm';
 const AddStudent = () => {
   return (
     <section className="section">
-      <div className="content">
+      <div className="content has-text-centered">
         <h2 className="title">Add a student!</h2>
       </div>
       <div className="columns is-centered">
