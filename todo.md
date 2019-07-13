@@ -4,7 +4,6 @@ deployment
 
 plan out component structure
 
-list schools
 school detail
 hook up nav school routes
 

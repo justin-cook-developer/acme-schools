@@ -1,14 +1,20 @@
 import React from 'react';
 
+import SchoolCard from '../SchoolCard/SchoolCard';
+
+const wrapTiles = {
+  flexWrap: 'wrap',
+};
+
 const Schools = ({ schools }) => {
   return (
     <section className="section">
       <div className="container">
-        <ul>
+        <div className="tile is-ancestor" style={wrapTiles}>
           {schools.map(school => (
-            <li key={school.id}>{school.name}</li>
+            <SchoolCard key={school.id} school={school} />
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );
