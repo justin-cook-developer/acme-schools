@@ -7,5 +7,3 @@ think memoize filtering
 make utils functions efficient; gpa nan
 readme.md
 expand seed file
-
-redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
