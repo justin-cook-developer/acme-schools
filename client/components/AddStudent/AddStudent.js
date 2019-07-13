@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import StateManager from '../StudentForms/StateManager';
 import PostForm from '../StudentForms/PostForm/PostForm';
@@ -21,4 +20,4 @@ const AddStudent = () => {
   );
 };
 
-export default withRouter(AddStudent);
+export default AddStudent;
