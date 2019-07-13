@@ -4,7 +4,6 @@ deployment
 
 plan out component structure
 
-edit student modal w/ route in /students (/students/edit/:id)
 list schools
 school detail
 
