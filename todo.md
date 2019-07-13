@@ -4,8 +4,6 @@ deployment
 
 plan out component structure
 
-nav bar font size
-
 edit student modal w/ route in /students (/students/edit/:id)
 student cards height issue
 
