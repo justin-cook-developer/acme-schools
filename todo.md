@@ -4,12 +4,13 @@ deployment
 
 plan out component structure
 
-list schools
 school detail
+hook up nav school routes
 
 student cards height issue
 think memoize filtering
 make utils functions efficient; gpa nan
+readme.md
+expand seed file
 
 redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
-
