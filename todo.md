@@ -2,11 +2,6 @@ deployment
 -- try npm postinstall scripts for build webpack, createdb
 -- seed on install?
 
-plan out component structure
-
-form around select
-hook up nav school routes
-
 student cards height issue
 think memoize filtering
 make utils functions efficient; gpa nan
