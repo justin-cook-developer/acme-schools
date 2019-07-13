@@ -5,8 +5,8 @@ import axios from 'axios';
 import FormMarkup from '../FormMarkup/FormMarkup';
 
 class PutForm extends Component {
-  goStudents = () => {
-    this.props.history.push('/students');
+  goBack = () => {
+    this.props.history.goBack();
   };
 
   handleSubmit = async e => {
@@ -22,7 +22,7 @@ class PutForm extends Component {
         this.props.setErrors(data.errors);
       } else {
         this.props.updateStudent(data);
-        this.goStudents();
+        this.goBack();
       }
     } catch (error) {
       console.error(error);
@@ -30,7 +30,7 @@ class PutForm extends Component {
   };
 
   render() {
-    const { goStudents, handleSubmit } = this;
+    const { goBack, handleSubmit } = this;
     const {
       state,
       handleTextChange,
@@ -44,7 +44,7 @@ class PutForm extends Component {
         handleTextChange={handleTextChange}
         handleGpaChange={handleGpaChange}
         handleSchoolChange={handleSchoolChange}
-        handleCancel={goStudents}
+        handleCancel={goBack}
         handleSubmit={handleSubmit}
       />
     );
