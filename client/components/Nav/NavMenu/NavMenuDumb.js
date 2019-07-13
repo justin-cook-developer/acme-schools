@@ -15,19 +15,25 @@ const NavEnd = () => (
 
 const NavStart = ({ students, schools, mostPopular, bestGPA }) => (
   <div className="navbar-start">
-    <NavLink className="navbar-item" to="/students">
+    <NavLink className="navbar-item is-size-5" to="/students">
       Students ({students.length})
     </NavLink>
-    <NavLink className="navbar-item" to="/schools">
+    <NavLink className="navbar-item is-size-5" to="/schools">
       Schools ({schools.length})
     </NavLink>
     {mostPopular && mostPopular.length === 2 && (
-      <NavLink className="navbar-item" to={`/schools/${mostPopular[0].id}`}>
+      <NavLink
+        className="navbar-item is-size-5"
+        to={`/schools/${mostPopular[0].id}`}
+      >
         Most Popular: {mostPopular[0].name} ({mostPopular[1]})
       </NavLink>
     )}
     {bestGPA && bestGPA.length === 2 && (
-      <NavLink className="navbar-item" to={`/schools/${bestGPA[0].id}`}>
+      <NavLink
+        className="navbar-item is-size-5"
+        to={`/schools/${bestGPA[0].id}`}
+      >
         Top School: {bestGPA[0].name} ({bestGPA[1]})
       </NavLink>
     )}
@@ -37,9 +43,7 @@ const NavStart = ({ students, schools, mostPopular, bestGPA }) => (
 const NavMenu = props => {
   const { navExpanded } = props;
   return (
-    <div
-      className={`navbar-menu ${navExpanded ? 'is-active' : ''}`}
-    >
+    <div className={`navbar-menu ${navExpanded ? 'is-active' : ''}`}>
       <NavStart {...props} />
       <NavEnd />
     </div>

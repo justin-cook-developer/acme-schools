@@ -4,9 +4,8 @@ deployment
 
 plan out component structure
 
-format first name and last name errors FirstName
-
 nav bar font size
+
 edit student modal w/ route in /students (/students/edit/:id)
 student cards height issue
 
