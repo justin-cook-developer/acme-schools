@@ -4,7 +4,7 @@ deployment
 
 plan out component structure
 
-school detail
+form around select
 hook up nav school routes
 
 student cards height issue
