@@ -4,8 +4,6 @@ deployment
 
 plan out component structure
 
-
-fix handlegpa to allow ''
 format first name and last name errors FirstName
 
 nav bar font size

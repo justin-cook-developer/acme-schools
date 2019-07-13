@@ -5,7 +5,13 @@ const parseValidate = e => {
   let msg = '';
 
   if (key === 'notEmpty') {
-    msg = sentenceCase(`${path} is required.`);
+    if (path === 'firstName') {
+      msg = 'First name is required.';
+    } else if (path === 'lastName') {
+      msg = 'Last name is required.';
+    } else {
+      msg = sentenceCase(`${path} is required.`);
+    }
   } else if (key === 'isEmail') {
     msg = sentenceCase(`${path} must be a valid email address.`);
   } else if (key === 'len' && path === 'password') {
@@ -22,7 +28,13 @@ const parseNotValidate = e => {
   let msg = '';
 
   if (type.startsWith('notNull')) {
-    msg = sentenceCase(`${path} is required.`);
+    if (path === 'firstName') {
+      msg = 'First name is required.';
+    } else if (path === 'lastName') {
+      msg = 'Last name is required.';
+    } else {
+      msg = sentenceCase(`${path} is required.`);
+    }
   } else if (type.startsWith('unique') && path === 'email') {
     msg = 'An account is already registered to this email address.';
   }
