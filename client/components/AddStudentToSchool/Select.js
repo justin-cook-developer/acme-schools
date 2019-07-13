@@ -1,9 +1,15 @@
 import React from 'react';
 
-const Select = ({ handleChange, students }) => (
-  <select onChange={handleChange}>
+const Select = ({ changeStudentsSchool, notAttending }) => (
+  <select
+    onChange={e => {
+      const value = e.target.value;
+      if (!value) return;
+      changeStudentsSchool(value);
+    }}
+  >
     <option value="">-- Add a student --</option>
-    {students.map(student => (
+    {notAttending.map(student => (
       <option key={student.id} value={student.id}>
         {student.firstName} {student.lastName}
       </option>

@@ -1,8 +1,6 @@
-import React, { Fragment } from 'react';
-import { Route } from 'react-router-dom';
+import React from 'react';
 
 import StudentCard from '../StudentCard/StudentCard';
-import EditModal from '../EditModal/EditModal';
 
 const wrapTiles = {
   flexWrap: 'wrap',
@@ -10,18 +8,15 @@ const wrapTiles = {
 
 const Students = ({ students }) => {
   return (
-    <Fragment>
-      <Route path="/students/edit/:id" exact component={EditModal} />
-      <section className="section">
-        <div className="container">
-          <div className="tile is-ancestor" style={wrapTiles}>
-            {students.map(student => (
-              <StudentCard student={student} key={student.id} />
-            ))}
-          </div>
+    <section className="section">
+      <div className="container">
+        <div className="tile is-ancestor" style={wrapTiles}>
+          {students.map(student => (
+            <StudentCard student={student} key={student.id} />
+          ))}
         </div>
-      </section>
-    </Fragment>
+      </div>
+    </section>
   );
 };
 

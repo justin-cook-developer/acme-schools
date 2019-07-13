@@ -1,20 +1,12 @@
 import React from 'react';
 
 import CardContent from './CardContent/CardContent';
-import Select from './CardSelect/CardSelect';
+import AddStudentToSchool from '../AddStudentToSchool/AddStudentToSchool';
 import methods from '../../utils/index';
 
-const { attendeesCount, notAttending } = methods;
+const { attendeesCount } = methods;
 
-const handleChange = ({ target }, schoolId, updateStudent) => {
-  const { value } = target;
-  if (!value) {
-    return;
-  }
-  updateStudent(value, schoolId);
-};
-
-const SchoolCard = ({ school, students, updateStudent }) => {
+const SchoolCard = ({ school, students }) => {
   return (
     <div className="tile is-parent is-4">
       <div className="tile is-child box has-text-centered">
@@ -22,10 +14,7 @@ const SchoolCard = ({ school, students, updateStudent }) => {
           attendees={attendeesCount(school, students)}
           school={school}
         />
-        <Select
-          students={notAttending(school.id, students)}
-          handleChange={e => handleChange(e, school.id, updateStudent)}
-        />
+        <AddStudentToSchool school={school} />
       </div>
     </div>
   );
