@@ -26,6 +26,11 @@ app.use((e, req, res, next) => {
   ) {
     res.json(parseErrors(e.errors));
     return;
+  } else if (
+    e.name === 'SequelizeDatabaseError' &&
+    e.message === 'invalid input syntax for type double precision: ""'
+  ) {
+    res.json({ errors: { GPA: 'GPA is required.' } });
   }
   next(e);
 });

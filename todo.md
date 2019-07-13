@@ -4,7 +4,7 @@ deployment
 
 plan out component structure
 
-need to send back a gpa error if ''
+
 fix handlegpa to allow ''
 format first name and last name errors FirstName
 

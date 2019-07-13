@@ -11,7 +11,7 @@ const parseValidate = e => {
   } else if (key === 'len' && path === 'password') {
     msg = 'Password must be at least 7 characters long.';
   } else if ((key === 'min' || key === 'max') && path === 'GPA') {
-    msg = 'GPA must be greater than 0.0 and less than 5.0.'
+    msg = 'GPA must be greater than 0.0 and less than 5.0.';
   }
 
   return msg;
