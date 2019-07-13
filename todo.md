@@ -1,7 +1,14 @@
 deployment
--- try npm postinstall scripts for dep
+-- try npm postinstall scripts for build webpack, createdb
 -- seed on install?
 
-plan out component structure/ state strucure (two flat arrays)
-setup front end webpack stuff for react/redux/bulma
+plan out component structure
+
+nav bar font size
+
+edit student modal w/ route in /students (/students/edit/:id)
+student cards height issue
+
+redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
 think memoize filtering
+make utils functions efficient
