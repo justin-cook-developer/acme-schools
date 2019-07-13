@@ -15,11 +15,15 @@ const schoolsData = [
   ),
   makeSchool('UCSD'),
   makeSchool('Cal Poly'),
+  makeSchool('UCSB'),
+  makeSchool('CSUMB'),
 ];
 const studentsData = [
   makeStudent('Justin', 'Cook', 'justin@gmail.com', 3.5),
   makeStudent('Blake', 'Adams', 'blake@gmail.com', 3.5),
   makeStudent('Alex', 'Hinerman', 'alex@gmail.com', 3.7),
+  makeStudent('Alec', 'Nevis', 'alec@gmail.com', 3.1),
+  makeStudent('Jeff', 'Smith', 'jeff@gmail.com', 3.9),
 ];
 
 connection
@@ -31,7 +35,7 @@ connection
     const schools = await Promise.all(creatingSchools);
     const students = await Promise.all(creatingStudents);
 
-    const creatingAssociations = schools.map((school, i) => {
+    const creatingAssociations = schools.slice(0, 3).map((school, i) => {
       const student = students[i];
       return student.setSchool(school);
     });
