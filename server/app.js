@@ -31,6 +31,7 @@ app.use((e, req, res, next) => {
     e.message === 'invalid input syntax for type double precision: ""'
   ) {
     res.json({ errors: { GPA: 'GPA is required.' } });
+    return;
   }
   next(e);
 });

@@ -5,8 +5,13 @@ deployment
 plan out component structure
 
 edit student modal w/ route in /students (/students/edit/:id)
-student cards height issue
+list schools
+school detail
 
-redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
+
+student cards height issue
 think memoize filtering
 make utils functions efficient
+
+redux actions for start, succeed, fail: https://daveceddia.com/where-fetch-data-redux/
+
