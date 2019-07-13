@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StateManager from '../StudentForms/StateManager';
+import StateManager from '../StudentForms/StateManagers/StateManager';
 import PostForm from '../StudentForms/PostForm/PostForm';
 
 const AddStudent = () => {
