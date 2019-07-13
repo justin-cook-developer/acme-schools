@@ -97,15 +97,15 @@ const FormMarkup = ({
         </label>
         <div className="control">
           <div className="select">
-            <select name="school" onChange={handleSchoolChange}>
+            <select
+              name="school"
+              value={schoolId || ''}
+              onChange={handleSchoolChange}
+            >
               <option value={null}>-- Not enrolled --</option>
               {schools.map(school => {
                 return (
-                  <option
-                    key={school.id}
-                    value={school.id}
-                    selected={school.id === schoolId}
-                  >
+                  <option key={school.id} value={school.id}>
                     {school.name}
                   </option>
                 );
