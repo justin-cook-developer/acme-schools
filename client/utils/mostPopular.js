@@ -1,14 +1,14 @@
 const studentsPerSchool = (students = []) =>
-  students.reduce((count, student) => {
+  students.reduce((counts, student) => {
     const schoolId = student.schoolId;
     if (schoolId) {
-      if (count[schoolId]) {
-        count[schoolId]++;
+      if (counts[schoolId]) {
+        counts[schoolId]++;
       } else {
-        count[schoolId] = 1;
+        counts[schoolId] = 1;
       }
     }
-    return count;
+    return counts;
   }, {});
 
 const sortSchoolsByStudents = (counts = {}) => {
