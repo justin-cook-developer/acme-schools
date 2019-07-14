@@ -4,7 +4,6 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
-  watch: true,
   entry: ['@babel/polyfill', './client/index.js'],
   output: {
     filename: 'bundle.js',

@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 
-const connection = new Sequelize('postgres://:5432/acme-schools', {
+const url = process.env.DATABASE_URL || 'postgres://:5432/acme-schools';
+
+const connection = new Sequelize(url, {
   logging: false,
 });
 

@@ -4,8 +4,11 @@
   "description": "Junior phase project.",
   "main": "index.js",
   "scripts": {
+    "start": "npm run server & npm run webpack",
     "start:dev": "npm run webpack:dev & npm run server:dev",
+    "server": "node ./server/index.js",
     "server:dev": "nodemon ./server/index.js --ignore client --ignore public",
+    "webpack": "webpack --mode='production'",
     "webpack:dev": "webpack --watch",
     "test:models": "mocha ./tests/models/*.test.js --watch",
     "test:routes": "mocha ./tests/routes/*.test.js --watch",
@@ -46,5 +49,8 @@
     "supertest": "^4.0.2",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5"
+  },
+  "engines": {
+    "node": "10.15.0"
   }
 }
