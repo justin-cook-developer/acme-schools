@@ -3,16 +3,39 @@ const truncateTwoPlaces = num => {
   return Number(fixed);
 };
 
-const findAvgGpa = (schoolId, students) => {
-  const _students = students.filter(s => s.schoolId === schoolId);
-  const totalGPAs = _students.reduce((total, s) => total + s.GPA, 0);
-  const avg = totalGPAs / _students.length;
+const findAvgGpa = students => {
+  if (students === true) return 0;
+  const totalGPAs = students.reduce((total, s) => total + s.GPA, 0);
+  const avg = totalGPAs / students.length;
   return truncateTwoPlaces(avg);
 };
 
+const makeRecords = (students, schools) => {
+  const schoolIds = schools.reduce((record, school) => {
+    record[school.id] = true;
+    return record;
+  }, {});
+
+  const studentsBySchoolId = students.reduce((record, student) => {
+    const schoolId = student.schoolId;
+    if (schoolId && record[schoolId]) {
+      if (Array.isArray(record[schoolId])) {
+        record[schoolId].push(student);
+      } else {
+        record[schoolId] = [student];
+      }
+    }
+    return record;
+  }, schoolIds);
+
+  return studentsBySchoolId;
+};
+
 const calculateGpas = (students = [], schools = []) => {
+  const studentsBySchoolId = makeRecords(students, schools);
+
   return schools.reduce((record, school) => {
-    record[school.name] = [school, findAvgGpa(school.id, students)];
+    record[school.name] = [school, findAvgGpa(studentsBySchoolId[school.id])];
     return record;
   }, {});
 };
