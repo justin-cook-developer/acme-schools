@@ -22,6 +22,7 @@ const Home = ({ mostPopular, bestGPA }) => {
       <img
         className="hero-background is-transparent"
         src="/vasily-koloda-8CqDvPuo_kI-unsplash.jpg"
+        alt="School graduation"
         style={imgStyles}
       />
       <div className="hero-body">
