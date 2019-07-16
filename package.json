@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run server",
-    "build": "webpack --mode='production'",
+    "build": "webpack  --config production.config.js",
     "start:dev": "npm run webpack:dev & npm run server:dev",
     "server": "node ./server/index.js",
     "server:dev": "nodemon ./server/index.js --ignore client --ignore public",
