@@ -16,7 +16,6 @@ const imgStyles = {
 };
 
 const Home = ({ mostPopular, bestGPA }) => {
-  console.log(mostPopular, bestGPA);
   return (
     <section className="hero is-success is-fullheight" style={heroStyles}>
       <img

@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import NavMenu from './NavMenuDumb';
 import methods from '../../../utils/index';
 
-const { findMostPopularSchool, findSchoolWithHighestGPA } = methods;
+const {
+  findMostPopularSchoolSelector,
+  findSchoolWithHighestGPASelector,
+} = methods;
 
-const mapStateToProps = ({ students, schools, ui }) => {
+const mapStateToProps = state => {
+  const { ui, students, schools } = state;
   const { navExpanded } = ui;
   const base = {
     students,
@@ -16,8 +20,8 @@ const mapStateToProps = ({ students, schools, ui }) => {
   if (students.length && schools.length) {
     return {
       ...base,
-      mostPopular: findMostPopularSchool(students, schools),
-      bestGPA: findSchoolWithHighestGPA(students, schools),
+      mostPopular: findMostPopularSchoolSelector(state),
+      bestGPA: findSchoolWithHighestGPASelector(state),
     };
   } else {
     return base;

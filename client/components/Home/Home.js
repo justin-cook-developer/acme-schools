@@ -3,13 +3,16 @@ import { connect } from 'react-redux';
 import Home from './HomeDumb';
 import methods from '../../utils/index';
 
-const { findMostPopularSchool, findSchoolWithHighestGPA } = methods;
+const {
+  findMostPopularSchoolSelector,
+  findSchoolWithHighestGPASelector,
+} = methods;
 
-const mapStateToProps = ({ students, schools }) => {
-  if (students.length && schools.length) {
+const mapStateToProps = state => {
+  if (state.students.length && state.schools.length) {
     return {
-      mostPopular: findMostPopularSchool(students, schools),
-      bestGPA: findSchoolWithHighestGPA(students, schools),
+      mostPopular: findMostPopularSchoolSelector(state),
+      bestGPA: findSchoolWithHighestGPASelector(state),
     };
   } else {
     return {};
