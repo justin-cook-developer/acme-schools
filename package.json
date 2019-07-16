@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run server",
-    "build": "webpack --mode='production'",
+    "build": "webpack  --config production.config.js",
     "start:dev": "npm run webpack:dev & npm run server:dev",
     "server": "node ./server/index.js",
     "server:dev": "nodemon ./server/index.js --ignore client --ignore public",
@@ -24,6 +24,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.19.0",
     "bulma": "^0.7.5",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "pg": "^7.11.0",
