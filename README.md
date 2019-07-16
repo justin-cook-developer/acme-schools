@@ -36,7 +36,18 @@ This project was assigned as the culmination of my Junior Phase at Fullstack Aca
 
 ## Features
 
-What makes your project stand out?
+<b>Users can:</b>
+
+- See all schools
+- See a single school and the students who attend it
+- See the most popular school
+- See the school with the best GPA
+- Add a student to a school
+- Reassign a student to a different school
+- Create a student
+- Update a student's information
+- Delete a student
+
 
 ## Installation
 
@@ -49,7 +60,7 @@ If you do not have Node (https://nodejs.org/en/download/) and PostgreSQL (https:
 - execute 'npm install' to install the packages
 - execute 'npm run seed' to seed the database
 - execute 'npm run start:dev' to start the application server
-- navigate to 'http://localhost:3000/#/' in the browser
+- navigate to (http://localhost:3000/#/) in the browser
 
 ## API Reference
 
