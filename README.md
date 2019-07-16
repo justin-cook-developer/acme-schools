@@ -47,13 +47,13 @@ Acme Schools is a fullstack CRUD application for managing students and the schoo
 See the deployed version here: (https://vert-madame-81975.herokuapp.com/#/).
 
 Since anyone can create/edit students, please be respectful and do not add any offensive names or emails.
-If you see any offensive content for a student, please delete that student.
+If you see any offensive content for a student, please delete that student. In addition, do not add any information which you do not wish to be public, specifically emails.
 
 The currently deployed branch is 'release/1.0'.
 
 ## Installation
 
-If you do not have Node (https://nodejs.org/en/download/) and PostgreSQL (https://postgresapp.com/downloads.html) installed, you will need to install them both.
+If you do not have Node (https://nodejs.org/en/download/) and PostgreSQL (https://postgresapp.com/downloads.html) installed, you will need to install both.
 
 <b>Then:</b>
 
