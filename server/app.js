@@ -1,12 +1,14 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const compresssion = require('compression');
 
 const parseErrors = require('./parseErrors/index');
 
 const app = express();
 
 app.use(morgan('dev'));
+app.use(compresssion());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
