@@ -1,12 +1,14 @@
-## Project title
+## Acme Schools
 
 Acme Schools is a fullstack CRUD application for managing students and the schools they attend.
+See the deployed version here: https://vert-madame-81975.herokuapp.com/#/.
+See below for development environment instructions.
 
 ## Motivation
 
-This project was assigned as the culmination of my junior phase at Fullstack Academy.
+This project was assigned as the culmination of my Junior Phase at Fullstack Academy.
 
-## Major Technologies/Frameworks used
+## Major Technologies/Frameworks
 
 <b>Backend</b>
 
@@ -38,7 +40,16 @@ What makes your project stand out?
 
 ## Installation
 
-Provide step by step series of examples and explanations about how to get a development env running.
+If you do not have Node (https://nodejs.org/en/download/) and PostgreSQL (https://postgresapp.com/downloads.html) installed, you will need to install them both.
+
+<b>Then:</b>
+
+- Clone this directory && cd 'acme-schools'
+- Create the database 'acme-schools' by executing 'createdb acme-schools' in the terminal or using a GUI
+- execute 'npm install' to install the packages
+- execute 'npm run seed' to seed the database
+- execute 'npm run start:dev' to start the application server
+- navigate to 'http://localhost:3000/#/' in the browser
 
 ## API Reference
 
