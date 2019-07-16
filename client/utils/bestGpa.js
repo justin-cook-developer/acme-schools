@@ -1,14 +1,7 @@
-const truncateTwoPlaces = num => {
-  const fixed = num.toFixed(2);
-  return Number(fixed);
-};
+import { createSelector } from 'reselect';
 
-const findAvgGpa = students => {
-  if (students === true) return 0;
-  const totalGPAs = students.reduce((total, s) => total + s.GPA, 0);
-  const avg = totalGPAs / students.length;
-  return truncateTwoPlaces(avg);
-};
+const studentsSelector = state => state.students;
+const schoolsSelector = state => state.schools;
 
 const makeRecords = (students, schools) => {
   const schoolIds = schools.reduce((record, school) => {
@@ -31,14 +24,36 @@ const makeRecords = (students, schools) => {
   return studentsBySchoolId;
 };
 
-const calculateGpas = (students = [], schools = []) => {
-  const studentsBySchoolId = makeRecords(students, schools);
+const makeRecordsSelector = createSelector(
+  studentsSelector,
+  schoolsSelector,
+  makeRecords
+);
 
+const truncateTwoPlaces = num => {
+  const fixed = num.toFixed(2);
+  return Number(fixed);
+};
+
+const findAvgGpa = students => {
+  if (students === true) return 0;
+  const totalGPAs = students.reduce((total, s) => total + s.GPA, 0);
+  const avg = totalGPAs / students.length;
+  return truncateTwoPlaces(avg);
+};
+
+const calculateGpas = (schools = [], records) => {
   return schools.reduce((record, school) => {
-    record[school.name] = [school, findAvgGpa(studentsBySchoolId[school.id])];
+    record[school.name] = [school, findAvgGpa(records[school.id])];
     return record;
   }, {});
 };
+
+const calculateGpasSelector = createSelector(
+  schoolsSelector,
+  makeRecordsSelector,
+  calculateGpas
+);
 
 const findHighestGpa = (gpas = {}) => {
   const vals = Object.values(gpas);
@@ -50,9 +65,9 @@ const findHighestGpa = (gpas = {}) => {
   return vals[0];
 };
 
-const findSchoolWithHighestGPA = (students = [], schools = []) => {
-  const gpas = calculateGpas(students, schools);
-  return findHighestGpa(gpas);
-};
+const findSchoolWithHighestGPASelector = createSelector(
+  calculateGpasSelector,
+  gpas => findHighestGpa(gpas)
+);
 
-export default findSchoolWithHighestGPA;
+export default findSchoolWithHighestGPASelector;

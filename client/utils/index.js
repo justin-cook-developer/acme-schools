@@ -1,10 +1,10 @@
-import findMostPopularSchool from './mostPopular';
-import findSchoolWithHighestGPA from './bestGpa';
+import findMostPopularSchoolSelector from './mostPopular';
+import findSchoolWithHighestGPASelector from './bestGpa';
 import attendeesCount from './numAttendees';
 
 const methods = {
-  findMostPopularSchool,
-  findSchoolWithHighestGPA,
+  findMostPopularSchoolSelector,
+  findSchoolWithHighestGPASelector,
   attendeesCount,
 };
 

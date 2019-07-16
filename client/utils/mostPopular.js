@@ -1,3 +1,8 @@
+import { createSelector } from 'reselect';
+
+const studentsSelector = state => state.students;
+const schoolsSelector = state => state.schools;
+
 const studentsPerSchool = (students = []) =>
   students.reduce((counts, student) => {
     const schoolId = student.schoolId;
@@ -11,6 +16,11 @@ const studentsPerSchool = (students = []) =>
     return counts;
   }, {});
 
+const studentsPerSchoolSelector = createSelector(
+  studentsSelector,
+  studentsPerSchool
+);
+
 const sortSchoolsByStudents = (counts = {}) => {
   return Object.entries(counts).sort((a, b) => {
     const [_, count1] = a;
@@ -19,11 +29,18 @@ const sortSchoolsByStudents = (counts = {}) => {
   });
 };
 
-const findMostPopularSchool = (students = [], schools = []) => {
-  const studentCounts = studentsPerSchool(students);
-  const [[schoolId, count]] = sortSchoolsByStudents(studentCounts);
-  const school = schools.find(_school => _school.id === schoolId);
-  return [school, count];
-};
+const sortSchoolsByStudentsSelector = createSelector(
+  studentsPerSchoolSelector,
+  sortSchoolsByStudents
+);
 
-export default findMostPopularSchool;
+const findMostPopularSchoolSelector = createSelector(
+  schoolsSelector,
+  sortSchoolsByStudentsSelector,
+  (schools, [[schoolId, count]]) => {
+    const school = schools.find(_school => _school.id === schoolId);
+    return [school, count];
+  }
+);
+
+export default findMostPopularSchoolSelector;

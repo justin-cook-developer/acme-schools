@@ -8,6 +8,7 @@ const NavBrand = () => (
     <Link className="navbar-item" to="/">
       <img
         src="http://acmeschool.ca/images/template/logo.png"
+        alt="Acme Schools Logo"
         width="112"
         height="28"
       />

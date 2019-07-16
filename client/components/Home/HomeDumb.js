@@ -16,12 +16,12 @@ const imgStyles = {
 };
 
 const Home = ({ mostPopular, bestGPA }) => {
-  console.log(mostPopular, bestGPA);
   return (
     <section className="hero is-success is-fullheight" style={heroStyles}>
       <img
         className="hero-background is-transparent"
         src="/vasily-koloda-8CqDvPuo_kI-unsplash.jpg"
+        alt="School graduation"
         style={imgStyles}
       />
       <div className="hero-body">
