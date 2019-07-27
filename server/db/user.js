@@ -69,7 +69,7 @@ User.comparePasswords = (inputStr, pass) => {
   });
 };
 
-User.login = async function(email, inputPass) {
+User.login = async function(email, password) {
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
@@ -77,7 +77,7 @@ User.login = async function(email, inputPass) {
       error.status = 401;
       throw error;
     }
-    await User.comparePasswords(inputPass, user.password);
+    await User.comparePasswords(password, user.password);
     return user;
   } catch (error) {
     throw error;
