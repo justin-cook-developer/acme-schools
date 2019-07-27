@@ -6,6 +6,7 @@ const middleware = async (req, res, next) => {
       const user = await User.findOne({ where: { id: req.session.userId } });
       req.user = user;
     }
+    next();
   } catch (error) {
     next(error);
   }
