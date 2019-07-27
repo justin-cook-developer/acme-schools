@@ -3,7 +3,11 @@ const express = require('express');
 const morgan = require('morgan');
 const compresssion = require('compression');
 
-const { sessionMiddleware, errorMiddleware } = require('./middleware/index');
+const {
+  sessionMiddleware,
+  serializeUserMiddleware,
+  errorMiddleware,
+} = require('./middleware/index');
 
 const app = express();
 
@@ -14,6 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+app.use(serializeUserMiddleware);
 
 app.use('/api', require('./api/index'));
 
