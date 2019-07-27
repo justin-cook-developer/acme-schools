@@ -30,6 +30,12 @@ User.init(
   }
 );
 
+User.prototype.toJSON = function() {
+  const instance = this.get();
+  delete instance.password;
+  return instance;
+}
+
 User.hash = password => {
   return new Promise((resolve, reject) => {
     bcrypt.hash(password, 12, (err, hash) => {
