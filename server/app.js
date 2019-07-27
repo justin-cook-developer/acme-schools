@@ -2,29 +2,16 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const compresssion = require('compression');
-const session = require('express-session');
 
-const parseErrors = require('./parseErrors/index');
+const { sessionMiddleware, errorMiddleware } = require('./middleware/index');
 
 const app = express();
 
 app.use(morgan('dev'));
+app.use(sessionMiddleware);
 app.use(compresssion());
-app.use(
-  session({
-    secret: process.env.SECRET || 'bad secret',
-    name: 'sid',
-    saveUninitialized: true,
-    resave: false,
-  })
-);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use((req, res, next) => {
-  console.log(req.session);
-  next();
-});
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
@@ -34,22 +21,6 @@ app.use((req, res) =>
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
 );
 
-app.use((e, req, res, next) => {
-  // this only works for the Student model
-  if (
-    e.name === 'SequelizeValidationError' ||
-    e.name === 'SequelizeUniqueConstraintError'
-  ) {
-    res.json(parseErrors(e.errors));
-    return;
-  } else if (
-    e.name === 'SequelizeDatabaseError' &&
-    e.message === 'invalid input syntax for type double precision: ""'
-  ) {
-    res.json({ errors: { GPA: 'GPA is required.' } });
-    return;
-  }
-  next(e);
-});
+app.use(errorMiddleware);
 
 module.exports = app;

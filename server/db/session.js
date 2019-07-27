@@ -1,5 +1,5 @@
 const { STRING, DATE } = require('sequelize');
-const db = require('./connection');
+const { connection: db } = require('./connection');
 
 const Session = db.define('session', {
   sid: {
