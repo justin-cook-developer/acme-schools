@@ -22,6 +22,9 @@ User.init(
     password: {
       type: Sequelize.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
     },
   },
   {
@@ -34,7 +37,7 @@ User.prototype.toJSON = function() {
   const instance = this.get();
   delete instance.password;
   return instance;
-}
+};
 
 User.hash = password => {
   return new Promise((resolve, reject) => {
@@ -68,8 +71,16 @@ User.comparePasswords = (inputStr, pass) => {
       if (success) {
         resolve(true);
       } else if (err) {
+        err.type = 'Auth';
+        err.subtype = 'password';
         err.status = 401;
         reject(err);
+      } else {
+        const error = new Error('Invalid password');
+        error.type = 'Auth';
+        error.subtype = 'password';
+        error.status = 401;
+        reject(error);
       }
     });
   });
@@ -79,7 +90,9 @@ User.login = async function(email, password) {
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      const error = new Error('No user with that email.');
+      const error = new Error('There is no account registered to that email.');
+      error.type = 'Auth';
+      error.subtype = 'email';
       error.status = 401;
       throw error;
     }

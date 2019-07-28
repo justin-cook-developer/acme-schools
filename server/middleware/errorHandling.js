@@ -6,6 +6,7 @@ const middleware = (e, req, res, next) => {
     e.name === 'SequelizeValidationError' ||
     e.name === 'SequelizeUniqueConstraintError'
   ) {
+    console.log('gen errors!!!!');
     res.json(parseErrors(e.errors));
     return;
   } else if (
