@@ -43,37 +43,44 @@ class App extends Component {
   }
 
   render() {
-    const id = this.props.user.id;
+    const loggedIn = this.props.loggedIn;
+    const loading = this.props.loadingUser;
+
+    if (loading) {
+      console.log('nothing');
+
+      return null;
+    }
+
     return (
       <Fragment>
-        {id && (
+        {loggedIn && (
           <header>
             <Nav />
           </header>
         )}
         <main>
-          {id && (
+          {loggedIn && (
             <Route path="/students/edit/:id" exact component={EditModal} />
           )}
           <Switch>
-            <PrivateRoute id={id} path="/" exact component={Home} />
-            <PrivateRoute id={id} path="/students" component={Students} />
-            <PrivateRoute
-              id={id}
-              path="/addStudent"
-              exact
-              component={AddStudent}
-            />
-            <PrivateRoute id={id} path="/schools" exact component={Schools} />
-            <PrivateRoute
-              id={id}
-              path="/schools/:id"
-              component={SchoolDetail}
-            />
-
-            <NoUserRoute id={id} exact path="/login" component={Login} />
-            <NoUserRoute id={id} exact path="/signup" component={Signup} />
-            <Route render={() => <Redirect to={id ? '/' : '/login'} />} />
+            {loggedIn && (
+              <Fragment>
+                <Route path="/" exact component={Home} />
+                <Route path="/students" component={Students} />
+                <Route path="/addStudent" exact component={AddStudent} />
+                <Route path="/schools" exact component={Schools} />
+                <Route path="/schools/:id" component={SchoolDetail} />
+                <Route render={() => <Redirect to="/" />} />
+              </Fragment>
+            )}
+            {!loggedIn && (
+              <Fragment>
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route render={() => <Redirect to="/login" />} />
+              </Fragment>
+            )}
           </Switch>
         </main>
       </Fragment>
