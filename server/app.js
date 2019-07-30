@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const compresssion = require('compression');
+const helmet = require('helmet');
 
 const {
   sessionMiddleware,
@@ -12,6 +13,7 @@ const {
 const app = express();
 
 app.use(morgan('dev'));
+app.use(helmet());
 app.use(sessionMiddleware);
 app.use(compresssion());
 app.use(express.json());
