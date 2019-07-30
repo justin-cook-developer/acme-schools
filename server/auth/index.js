@@ -17,7 +17,6 @@ router.post('/signup', async (req, res, next) => {
     req.session.userId = user.id;
     res.json(user);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 });

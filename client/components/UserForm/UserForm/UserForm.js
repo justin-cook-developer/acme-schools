@@ -3,11 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { gotUser } from '../../../actions/user';
 import UserForm from './UserFormDumb';
 
+// takes method and route as prop for axios
+
 const mapDispatchToProps = (dispatch, { history }) => ({
   addUser(user) {
-    dispatch(gotUser(user))
-      .then(() => history.push('/'))
-      .catch(console.error);
+    dispatch(gotUser(user));
+    history.push('/');
   },
 });
 

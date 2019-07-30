@@ -1,8 +1,8 @@
-import React, { Class } from 'react';
+import React, { Component } from 'react';
 import Axios from 'axios';
 import FormMarkup from '../FormMarkup/Form';
 
-class UserForm extends Class {
+class UserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,18 +42,24 @@ class UserForm extends Class {
   handleSubmit = async e => {
     e.preventDefault();
     try {
-      const { data } = await Axios[this.props.method](
+      const res = await Axios[this.props.method](
         this.props.route,
-        this.props.values
+        this.state.values
       );
 
-      if (data.errors) {
-        this.props.handleErrors(data.errors);
+      console.log(res);
+
+      if (res.data.errors) {
+        this.handleErrors(res.data.errors);
       } else {
-        this.props.addUser(data);
+        this.props.addUser(res.data);
       }
     } catch (error) {
-      console.error(error);
+      if (error.message.includes('401')) {
+        this.handleErrors({ auth: 'Invalid email or password.' });
+      } else {
+        console.error(error);
+      }
     }
   };
 

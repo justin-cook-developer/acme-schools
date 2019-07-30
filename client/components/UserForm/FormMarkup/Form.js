@@ -9,6 +9,7 @@ const Form = ({ values, errors, handleChange, handleSubmit, clear }) => {
         </label>
         <div className="control">
           <input
+            className="input"
             name="email"
             type="text"
             value={values.email}
@@ -25,6 +26,7 @@ const Form = ({ values, errors, handleChange, handleSubmit, clear }) => {
         </label>
         <div className="control">
           <input
+            className="input"
             name="password"
             type="password"
             value={values.password}
@@ -35,6 +37,11 @@ const Form = ({ values, errors, handleChange, handleSubmit, clear }) => {
           <p className="help is-danger">{errors.password}</p>
         )}
       </div>
+      {errors.auth && errors.auth.length && (
+        <div className="field">
+          <p className="help is-danger">{errors.auth}</p>
+        </div>
+      )}
       <div className="field is-grouped">
         <div className="control">
           <button type="submit" className="button is-link">
