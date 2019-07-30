@@ -11,32 +11,6 @@ import SchoolDetail from '../SchoolDetail/SchoolDetail';
 import Signup from '../Signup/Signup';
 import Login from '../Login/Login';
 
-const PrivateRoute = ({ component: ComponentToRender, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={_props =>
-        rest.id ? <ComponentToRender {..._props} /> : <Redirect to="/login" />
-      }
-    />
-  );
-};
-
-const NoUserRoute = ({ component: ComponentToRender, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={_props =>
-        rest.id === undefined ? (
-          <ComponentToRender {..._props} />
-        ) : (
-          <Redirect to="/" />
-        )
-      }
-    />
-  );
-};
-
 class App extends Component {
   componentDidMount() {
     this.props.fetchData();
@@ -47,8 +21,6 @@ class App extends Component {
     const loading = this.props.loadingUser;
 
     if (loading) {
-      console.log('nothing');
-
       return null;
     }
 
