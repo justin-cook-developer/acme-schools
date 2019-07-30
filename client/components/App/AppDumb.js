@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
 import Home from '../Home/Home';
@@ -11,28 +11,69 @@ import SchoolDetail from '../SchoolDetail/SchoolDetail';
 import Signup from '../Signup/Signup';
 import Login from '../Login/Login';
 
+const PrivateRoute = ({ component: ComponentToRender, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={_props =>
+        rest.id ? <ComponentToRender {..._props} /> : <Redirect to="/login" />
+      }
+    />
+  );
+};
+
+const NoUserRoute = ({ component: ComponentToRender, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={_props =>
+        rest.id === undefined ? (
+          <ComponentToRender {..._props} />
+        ) : (
+          <Redirect to="/" />
+        )
+      }
+    />
+  );
+};
+
 class App extends Component {
   componentDidMount() {
-    this.props.fetchStudents();
-    this.props.fetchSchools();
+    this.props.fetchData();
   }
 
   render() {
+    const id = this.props.user.id;
     return (
       <Fragment>
-        <header>
-          <Nav />
-        </header>
+        {id && (
+          <header>
+            <Nav />
+          </header>
+        )}
         <main>
-          <Route path="/students/edit/:id" exact component={EditModal} />
+          {id && (
+            <Route path="/students/edit/:id" exact component={EditModal} />
+          )}
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/students" component={Students} />
-            <Route path="/addStudent" exact component={AddStudent} />
-            <Route path="/schools" exact component={Schools} />
-            <Route path="/schools/:id" component={SchoolDetail} />
+            <PrivateRoute id={id} path="/" exact component={Home} />
+            <PrivateRoute id={id} path="/students" component={Students} />
+            <PrivateRoute
+              id={id}
+              path="/addStudent"
+              exact
+              component={AddStudent}
+            />
+            <PrivateRoute id={id} path="/schools" exact component={Schools} />
+            <PrivateRoute
+              id={id}
+              path="/schools/:id"
+              component={SchoolDetail}
+            />
+
+            <NoUserRoute id={id} exact path="/login" component={Login} />
+            <NoUserRoute id={id} exact path="/signup" component={Signup} />
+            <Route render={() => <Redirect to={id ? '/' : '/login'} />} />
           </Switch>
         </main>
       </Fragment>

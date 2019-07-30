@@ -1,13 +1,20 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-const NavEnd = () => (
+const NavEnd = ({ logout }) => (
   <div className="navbar-end">
     <div className="navbar-item">
       <div className="buttons">
         <Link to="/addStudent" className="button is-success is-small">
           Add a Student!
         </Link>
+        <button
+          type="button"
+          className="button is-small is-danger"
+          onClick={logout}
+        >
+          Logout
+        </button>
       </div>
     </div>
   </div>
@@ -45,7 +52,7 @@ const NavMenu = props => {
   return (
     <div className={`navbar-menu ${navExpanded ? 'is-active' : ''}`}>
       <NavStart {...props} />
-      <NavEnd />
+      <NavEnd logout={props.logout} />
     </div>
   );
 };

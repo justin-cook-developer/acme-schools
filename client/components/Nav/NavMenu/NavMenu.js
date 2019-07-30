@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import NavMenu from './NavMenuDumb';
 import methods from '../../../utils/index';
+import { removeMe } from '../../../actions/user';
 
 const {
   findMostPopularSchoolSelector,
@@ -28,7 +29,13 @@ const mapStateToProps = state => {
   }
 };
 
+const mapDispatchToProps = (dispatch, { history }) => ({
+  logout() {
+    dispatch(removeMe()).then(() => history.push('/login'));
+  },
+});
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(NavMenu);

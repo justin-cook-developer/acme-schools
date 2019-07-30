@@ -6,7 +6,7 @@ router.get('/me', (req, res, next) => {
     const user = req.user;
     res.json(user);
   } else {
-    res.redirect('/#/login');
+    res.json({ msg: 'You are not logged in.' });
   }
 });
 
