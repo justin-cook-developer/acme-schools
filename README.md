@@ -10,6 +10,7 @@ Acme Schools is a fullstack CRUD application for managing students and the schoo
 - [Express]
 - [PostgreSQL]
 - [Sequelize]
+- [Bcrypt]
 
 <b>Front End</b>
 
@@ -27,7 +28,6 @@ Acme Schools is a fullstack CRUD application for managing students and the schoo
 - [Supertest]
 - [Webpack]
 - [Babel]
-- [TravisCI]
 
 ## Features
 
@@ -45,12 +45,12 @@ Acme Schools is a fullstack CRUD application for managing students and the schoo
 
 ## Usage
 
-See the deployed version here: (https://vert-madame-81975.herokuapp.com/#/).
+See the deployed version here: (https://acme-schools-login.herokuapp.com). You will need to sign in.
 
 Since anyone can create/edit students, please be respectful and do not add any offensive names or emails.
 If you see any offensive content for a student, please delete that student. In addition, do not add any information which you do not wish to be public, specifically emails.
 
-The currently deployed branch is 'release/1.0'.
+The currently deployed branch is 'login'.
 
 ## Installation
 
@@ -64,6 +64,7 @@ If you do not have Node (https://nodejs.org/en/download/) and PostgreSQL (https:
 - execute `npm run seed` to seed the database
 - execute `npm run start:dev` to start the application server
 - navigate to (http://localhost:3000/#/) in the browser
+- signup to use the app
 
 ## Tests
 
