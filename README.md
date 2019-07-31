@@ -27,6 +27,7 @@ Acme Schools is a fullstack CRUD application for managing students and the schoo
 - [Supertest]
 - [Webpack]
 - [Babel]
+- [TravisCI]
 
 ## Features
 
